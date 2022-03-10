@@ -14,4 +14,4 @@ Patched at commit a6ec342712389aa44fa4f727c18cb0612aa12910
 If you load users via a file, non-admin users will be admin in the server\
 Security impact: high, added users are admin\
 Test to verify: add a admin user and a non-admin user and see if they are both admin or not, only the admin should be admin\
-Patched at commit
+Patched at commit 188b906e165699266c5cb7e5040d0c0851418769
