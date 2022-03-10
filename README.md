@@ -1,2 +1,1 @@
-# minirc
-School project for a buggy online discussion server
+MinIRC, a mini IRC-like tool
