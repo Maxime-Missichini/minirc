@@ -81,11 +81,11 @@ class Server:
             login, password = args
             login = login.strip()
             password = password.strip()
-            context.current_user = self.users.get(login)
-            if context.current_user and context.current_user['password'] == password:
+            temp = self.users.get(login)
+            if temp and temp['password'] == password:
+                context.current_user = temp
                 return True, ("Welcome %s" % login)
             else:
-                context.current_user = None
                 return False, "Invalid user or password"
 
         elif command == "logout":

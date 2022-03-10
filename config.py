@@ -1,6 +1,8 @@
+import sys
+
 parameters_description = { "address": ("string", "0.0.0.0"),
                            "port": ("int", 12345),
-                           "userdb": ("string", "") }
+                           "userdb": ("string", "./test.txt") }
 
 class ConfigError(BaseException):
     pass
@@ -47,7 +49,13 @@ class UserDB:
         self.add_user("guest", "guest", False)
 
     def add_user(self, login, password, admin):
-        self.users[login] = { "login": login, "admin" : bool(admin), "password" : password }
+        if admin == "True":
+            admin = True
+        elif admin == "False":
+            admin = False
+        elif admin is not False and admin is not True:
+            sys.exit("Wrong format for administrator rights")
+        self.users[login] = { "login": login, "admin" : admin, "password" : password }
 
     def get(self, login):
         try:

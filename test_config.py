@@ -24,6 +24,18 @@ def test_user_database():
     assert toto_user["admin"] == False
     assert toto_user["password"] == "tititoto"
 
+    users.add_user("tota", "tititota", "False")
+    toto_user = users.get("tota")
+    assert toto_user is not None
+    assert toto_user["admin"] == False
+    assert toto_user["password"] == "tititota"
+
+    users.add_user("toti", "tititotd", "True")
+    toto_user = users.get("toti")
+    assert toto_user is not None
+    assert toto_user["admin"] == True
+    assert toto_user["password"] == "tititotd"
+
 def test_load_userdb():
     users = config.load_userdb_from_content("toto tititoto True")
     user = users.get("toto")
