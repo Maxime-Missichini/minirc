@@ -7,3 +7,4 @@ MinIRC, a mini IRC-like tool
 "login guest notguest" returns bad user or password but we are logged in anyway\
 Security impact: high, we can login without password\
 Test to verify: login guest notguest | whoami, if whoami returns that we are not logged in, we are ok
+Patched at commit a6ec342712389aa44fa4f727c18cb0612aa12910
