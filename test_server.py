@@ -34,6 +34,19 @@ def test_failed_login():
     assert result == False
     assert answer == "Invalid user or password"
 
+def test_failed_login2():
+    c = config.Config()
+    s = server.Server(c)
+    context = s.new_context()
+
+    result, answer = s.execute(context, "login guest notguest")
+    assert result == False
+    assert answer == "Invalid user or password"
+
+    result, answer = s.execute(context, "whoami")
+    assert result == False
+    assert answer == "You are not currently logged in"
+
 
 def test_logout():
     c = config.Config()

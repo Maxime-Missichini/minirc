@@ -85,6 +85,7 @@ class Server:
             if context.current_user and context.current_user['password'] == password:
                 return True, ("Welcome %s" % login)
             else:
+                context.current_user = None
                 return False, "Invalid user or password"
 
         elif command == "logout":
