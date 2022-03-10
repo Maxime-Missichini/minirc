@@ -1,5 +1,3 @@
-import sys
-
 parameters_description = { "address": ("string", "0.0.0.0"),
                            "port": ("int", 12345),
                            "userdb": ("string", "./test.txt") }
@@ -54,7 +52,7 @@ class UserDB:
         elif admin == "False":
             admin = False
         elif admin is not False and admin is not True:
-            sys.exit("Wrong format for administrator rights")
+            raise ConfigError("Wrong format for administrator rights in users file")
         self.users[login] = { "login": login, "admin" : admin, "password" : password }
 
     def get(self, login):

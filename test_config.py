@@ -1,5 +1,7 @@
 import config
 
+from config import ConfigError
+
 def test_address_port_params():
     config_content = "address = 10.0.0.1\nport = 123\n"
     c = config.load_config_from_content(config_content)
@@ -35,6 +37,12 @@ def test_user_database():
     assert toto_user is not None
     assert toto_user["admin"] == True
     assert toto_user["password"] == "tititotd"
+
+    try:
+        users.add_user("tote", "tititote", "Whatever")
+        assert False
+    except ConfigError:
+        assert True
 
 def test_load_userdb():
     users = config.load_userdb_from_content("toto tititoto True")
